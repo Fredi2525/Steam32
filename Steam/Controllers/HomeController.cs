@@ -1,0 +1,51 @@
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using Steam.Models;
+
+namespace Steam.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        public IActionResult Index(string id)
+        {
+
+	        var oihjk = $"This is ID: {id}";
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult HelloPage()
+        {
+	        return View();
+        }
+
+        public IActionResult Hello()
+        {
+	        return View("HelloPage");
+        }
+
+        [Route("/truhaha/kdsghfjkdhkjf/2234723/route-path")]
+        public IActionResult Route()
+        {
+	        return View("HelloPage");
+        }
+
+
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+}
