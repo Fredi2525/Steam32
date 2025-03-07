@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35728.132 d17.12
+VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam", "Steam\Steam.csproj", "{0459D8DD-38C1-4A95-9262-AB54554F88DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{5641D82E-C48C-44DD-8B83-CD29974C6175}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{622CE8E0-76A9-49DA-AD86-DA492B3D46F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{223AB370-CD87-45B6-9231-B9C5AB951B81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{0459D8DD-38C1-4A95-9262-AB54554F88DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0459D8DD-38C1-4A95-9262-AB54554F88DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0459D8DD-38C1-4A95-9262-AB54554F88DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5641D82E-C48C-44DD-8B83-CD29974C6175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5641D82E-C48C-44DD-8B83-CD29974C6175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5641D82E-C48C-44DD-8B83-CD29974C6175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5641D82E-C48C-44DD-8B83-CD29974C6175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{622CE8E0-76A9-49DA-AD86-DA492B3D46F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622CE8E0-76A9-49DA-AD86-DA492B3D46F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622CE8E0-76A9-49DA-AD86-DA492B3D46F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622CE8E0-76A9-49DA-AD86-DA492B3D46F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{223AB370-CD87-45B6-9231-B9C5AB951B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{223AB370-CD87-45B6-9231-B9C5AB951B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{223AB370-CD87-45B6-9231-B9C5AB951B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{223AB370-CD87-45B6-9231-B9C5AB951B81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

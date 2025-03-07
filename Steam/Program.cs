@@ -1,3 +1,8 @@
+using Data;
+using Microsoft.EntityFrameworkCore;
+using Steam.Extensions;
+using System.Diagnostics;
+
 namespace Steam
 {
     public class Program
@@ -6,8 +11,25 @@ namespace Steam
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+	            config.AddJsonFile($"appsettings.json", optional: false);
+	            if (!Debugger.IsAttached)
+	            {
+		            config.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true);
+	            }
+	            if (args != null)
+	            {
+		            config.AddCommandLine(args);
+	            }
+            });
+            builder.Services.AddDbContext<SteamDbContext>(options =>
+	            options.UseSqlServer(builder.Configuration.GetConnectionString("SteamDbContext"),
+		            sqlServerOptions => sqlServerOptions.CommandTimeout((int?)TimeSpan.FromMinutes(1).TotalSeconds)));
+
+
+			// Add services to the container.
+			builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
@@ -29,8 +51,10 @@ namespace Steam
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+           
+            app.EnsureMigrationOfContext<SteamDbContext>(); //Force migration to the db
 
-            app.Run();
+			app.Run();
         }
     }
 }
