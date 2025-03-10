@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Account;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
@@ -7,7 +8,7 @@ namespace Data
 		public SteamDbContext(DbContextOptions<SteamDbContext> options) : base(options)
 		{ }
 
-		//public virtual DbSet<Account> Accounts { get; set; }
+		 public virtual DbSet<Account> Accounts { get; set; }
 		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
