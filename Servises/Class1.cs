@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace Services
 {
 	public class Class1
 	{
