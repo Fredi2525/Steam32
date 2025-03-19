@@ -27,7 +27,7 @@ namespace Services
             {
                 var dbResult = _accountManager.Add(new Account());
 
-                ;
+                
                 result.Success = true;
             }
             catch (Exception e)
