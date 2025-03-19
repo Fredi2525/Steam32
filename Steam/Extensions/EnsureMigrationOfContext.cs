@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 
-namespace Steam.Extensions;
+namespace Steam.WebApp.Extensions;
 
 public static class EnsureMigrationExtension
 {

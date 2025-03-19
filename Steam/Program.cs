@@ -1,9 +1,14 @@
 using Data;
 using Microsoft.EntityFrameworkCore;
-using Steam.Extensions;
+using Steam.WebApp.Extensions;
 using System.Diagnostics;
 using Data.Managers;
 using Data.Managers.Interfaces;
+using Services.Interfaces;
+using Entities.Account;
+using Services;
+using AutoMapper;
+using Models.Extensions;
 
 namespace Steam
 {
@@ -32,7 +37,10 @@ namespace Steam
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
-			builder.Services.AddScoped<IAccountManager, AccountManager>();
+            builder.Services.AddScoped<IMapper, Mapper>();
+            builder.Services.AddScoped<IAccountManager, AccountManager>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddAutomapperConfiguration();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

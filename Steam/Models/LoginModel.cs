@@ -1,4 +1,4 @@
-﻿namespace Steam.Models
+﻿namespace Steam.WebApp.Models
 {
 	public class LoginModel
 	{

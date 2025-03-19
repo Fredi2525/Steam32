@@ -1,5 +1,7 @@
-﻿using Data.Managers.Interfaces;
+﻿using AutoMapper;
+using Data.Managers.Interfaces;
 using Entities.Account;
+using Microsoft.Identity.Client;
 using Models.Accounts;
 using Models.Managers;
 using Services.Interfaces;
@@ -15,20 +17,25 @@ namespace Services
     public class AccountService : IAccountService
     {
         private readonly IAccountManager _accountManager;
+        private readonly IMapper _maper;
 
-        public AccountService(IAccountManager accountManager )
+
+        public AccountService(IAccountManager accountManager, IMapper maper  )
         {
             _accountManager = accountManager;
+            _maper = maper; 
         }
         public ManagerResult<AccountDto> Add(AccountDto account)
         {
             var result = new ManagerResult<AccountDto>();
             try
             {
-                var dbResult = _accountManager.Add(new Account());
-
+          
                 
-                result.Success = true;
+                var dbResult = _accountManager.Add(_maper.Map<Account>(account));
+                
+                result.Success = dbResult.Success;
+                result.Data = _maper.Map<AccountDto>(dbResult.Data);
             }
             catch (Exception e)
             {

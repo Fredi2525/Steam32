@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Steam.Models;
+using Steam.WebApp.Models;
 
-namespace Steam.Controllers
+namespace Steam.WebApp.Controllers
 {
     public class HomeController : Controller
     {
