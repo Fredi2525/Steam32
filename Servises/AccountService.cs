@@ -25,12 +25,16 @@ namespace Services
             _accountManager = accountManager;
             _maper = maper; 
         }
+
         public ManagerResult<AccountDto> Add(AccountDto account)
         {
             var result = new ManagerResult<AccountDto>();
             try
             {
-          
+                if(string.IsNullOrEmpty(account.UserName))
+                {
+                    result.Message = "User Name is null or empty";
+                }
                 
                 var dbResult = _accountManager.Add(_maper.Map<Account>(account));
                 

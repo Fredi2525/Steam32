@@ -20,7 +20,7 @@ namespace Data.Managers
 			try
 			{
 				var dbContext = _service.GetRequiredService<SteamDbContext>();
-				
+
 				account.Created = DateTime.Now;
 
 				dbContext.Accounts.Add(account);
@@ -34,5 +34,27 @@ namespace Data.Managers
 			}
 			return result;
 		}
-	}
+		public ManagerResult<Account> GetByUserName(string email)
+		{
+			var result = new ManagerResult<Account>();
+
+            var dbContext = _service.GetRequiredService<SteamDbContext>();
+
+			var account = dbContext.Accounts.FirstOrDefault(x=>x.UserName == email);
+			if (account == null)
+			{
+				result.Message = "Account not foud";
+				return result;
+			}
+
+			result.Data = account;
+			result.Success = true;
+
+            return result;
+
+
+		}
+
+        
+    }
 }
