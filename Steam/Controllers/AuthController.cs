@@ -19,12 +19,20 @@ namespace Steam.WebApp.Controllers
 		public IActionResult Login()
 		{
 			return View();
-		}		
-		[HttpPost]
-		public IActionResult Login(LoginModel model)
-		{
-			return Json("true");
 		}
+        [HttpPost]
+        public IActionResult Registration(AccountDto model)
+        {
+			var rsult = _accountService.Add(model);
+
+			return Json(rsult);
+        }
+        [HttpGet]
+		public IActionResult Registration()
+		{
+			return View();
+		}
+
         [HttpGet]
         public IActionResult TestAdd()
         {
@@ -32,7 +40,7 @@ namespace Steam.WebApp.Controllers
 			{
 				FName = "Ruslan",
 				LName = "Mihalik",
-				UserName = "mihalikr65@gmail.com",
+				UserName = "ruslanchik65@gmail.com",
 				Password = "123456709",
 				Gender = "Men",
 				DoB = new DateTime(2009,08,29)

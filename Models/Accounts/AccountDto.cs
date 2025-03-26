@@ -14,5 +14,7 @@ namespace Models.Accounts
 	    public string Gender { get; set; }
 	    public Role Role { get; set; }
 	    public string Password { get; set; }
-	}
+        public string ConfirmPassword { get; set; }
+
+    }
 }

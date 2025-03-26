@@ -34,8 +34,16 @@ namespace Services
                 if(string.IsNullOrEmpty(account.UserName))
                 {
                     result.Message = "User Name is null or empty";
+                    return result;
+
                 }
-                
+                var dbUserResult = _accountManager.GetByUserName(account.UserName);
+                if(dbUserResult.Success)
+                {
+                    result.Message = $"User with this {account.UserName} is alredy exist.";
+                    return result; 
+                }
+
                 var dbResult = _accountManager.Add(_maper.Map<Account>(account));
                 
                 result.Success = dbResult.Success;

@@ -1,0 +1,48 @@
+﻿@using Models.Accounts
+@model AccountDto
+<div class="row ">
+    <div class="col-4 offset-4">
+        <form method="post">
+            <div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">User Name</label>
+                    <input type="text" asp-for="UserName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="FName" class="form-label">Firts Name</label>
+                    <input type="text" asp-for="FName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">                   
+                </div>
+                <div class="mb-3">
+					<label for="LName" class="form-label">Last Name</label>
+                    <input type="text" asp-for="LName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">            
+                </div>
+                <div class="mb-3">
+                    <label for="Gander" class="form-label">Gender</label>
+                    <select asp-for="Gender" class="form-select form-select-lg" aria-label="Select Gender" id="Gender">
+                     <option selected>Open this select menu</option>
+                        <option value="Man">Man</option>
+                        <option value="Women">Women</option>
+                     </select>
+                    <div class="mb-3">
+                        <label for="Data" class="form-label"></label>
+                        <input type="date" asp-for="DoB" class="form-control form-control-lg" id="Data" aria-describedby="emailHelp">
+                    </div>
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" asp-for="Password" class="form-control form-control-lg" id="exampleInputPassword1">
+                </div>
+                    <div class="mb-3">
+                        <label for="ConfiPassword" class="form-label">ConfiPassword</label>
+                        <input type="password" asp-for="ConfirmPassword" class="form-control form-control-lg" id="exampleInputPassword1">
+                    </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" asp-action="Login" class="btn btn-primary">Registration</button>
+            </div>
+        </form>
+    </div>
+</div>
+
