@@ -43,7 +43,7 @@ namespace Steam.WebApp.Controllers
 				UserName = "ruslanchik65@gmail.com",
 				Password = "123456709",
 				Gender = "Men",
-				DoB = new DateTime(2009,08,29)
+				DoB = new DateTime(2008,08,29)
 			};
 
 			var result = _accountService.Add(accountDto);

@@ -8,14 +8,17 @@
                     <label for="exampleInputEmail1" class="form-label">User Name</label>
                     <input type="text" asp-for="UserName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="FName" class="form-label">Firts Name</label>
-                    <input type="text" asp-for="FName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">                   
+                    <input type="text" asp-for="FName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">
+                    <span asp-validation-for="FName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
 					<label for="LName" class="form-label">Last Name</label>
-                    <input type="text" asp-for="LName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">            
+                    <input type="text" asp-for="LName" class="form-control form-control-lg" id="User Name" aria-describedby="emailHelp">   
+                    <span asp-validation-for="LName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="Gander" class="form-label">Gender</label>
@@ -31,10 +34,12 @@
                 <div class="mb-3">
                     <label for="Password" class="form-label">Password</label>
                     <input type="password" asp-for="Password" class="form-control form-control-lg" id="exampleInputPassword1">
+                        <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                     <div class="mb-3">
                         <label for="ConfiPassword" class="form-label">ConfiPassword</label>
                         <input type="password" asp-for="ConfirmPassword" class="form-control form-control-lg" id="exampleInputPassword1">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
