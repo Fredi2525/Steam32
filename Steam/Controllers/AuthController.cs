@@ -23,9 +23,18 @@ namespace Steam.WebApp.Controllers
         [HttpPost]
         public IActionResult Registration(AccountDto model)
         {
-			var rsult = _accountService.Add(model);
-
-			return Json(rsult);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+		    					
+				
+            var result = _accountService.Add(model);
+			if(!result.Success)
+			{
+				return View("RegistrationError");
+			}
+			return RedirectToAction("LOGIN");
         }
         [HttpGet]
 		public IActionResult Registration()
