@@ -1,0 +1,32 @@
+﻿
+@model AccuntAddressDto
+<div class="row ">
+    <div class="col-4 offset-4">
+        <form method="post">
+            <div>
+                <div class="mb-3">
+                    <label for="exampleInputAddress" class="form-label">Address</label>
+                    <input type="address" asp-for="Address" class="form-control form-control-lg" id="exampleInputAddress" aria-describedby="addressHelp">                    
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputCity" class="form-label">City</label>
+                    <input type="city" asp-for="City" class="form-control form-control-lg" id="exampleInputCity">
+                </div>
+                <div class="mb-3 form-check">
+                    <label for="exampleInputBuildingNumber" class="form-label">BuildingNumber</label>
+                    <input type="buildingNumber" asp-for="BuildingNumber" class="form-control form-control-lg" id="exampleInputBuildingNumber">
+                </div>
+                <div class="mb-3 form-check">
+                    <label for="exampleInputCountry" class="form-label">Country</label>
+                    <input type="country" asp-for="Country" class="form-control form-control-lg" id="exampleInputCountry">
+                </div> 
+                <div class="mb-3 form-check">
+                    <label for="exampleInputZipCode" class="form-label">ZipCode</label>
+                    <input type="zipcode" asp-for="ZipCode" class="form-control form-control-lg" id="exampleInputZipCode">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

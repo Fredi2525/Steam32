@@ -44,6 +44,12 @@ namespace Services
                     return result; 
                 }
 
+                if (account.Password != account.ConfirmPassword)
+                {
+                    result.Message = $"Паролі не співпадають";
+                    return result;
+                }
+
                 var dbResult = _accountManager.Add(_maper.Map<Account>(account));
                 
                 result.Success = dbResult.Success;

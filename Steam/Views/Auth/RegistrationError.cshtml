@@ -1,3 +1,7 @@
-﻿<div>
-	Реєстрація пройшла не успішна...
+﻿<div class="alert alert-danger text-center" role="alert">
+	@if (ViewBag != null)
+	{
+		var error = (string)ViewBag.Error;
+		@Html.Raw(error);
+	}
 </div>

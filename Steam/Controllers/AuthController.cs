@@ -15,7 +15,14 @@ namespace Steam.WebApp.Controllers
 			_accountService = accountService;
 		}
 
-		[HttpGet]
+        [HttpGet]
+        public IActionResult AccuntAddressDto ()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
 		public IActionResult Login()
 		{
 			return View();
@@ -32,8 +39,10 @@ namespace Steam.WebApp.Controllers
             var result = _accountService.Add(model);
 			if(!result.Success)
 			{
+				ViewBag.Error = !string.IsNullOrEmpty(result.Message) ? result.Message : "Реєстрація пройшла не успішно,спробуйте ще разок";
 				return View("RegistrationError");
 			}
+
 			return RedirectToAction("LOGIN");
         }
         [HttpGet]
