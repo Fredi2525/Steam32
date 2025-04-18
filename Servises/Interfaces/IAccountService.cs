@@ -6,5 +6,6 @@ namespace Services.Interfaces
     public interface IAccountService
     {
 	    ManagerResult<AccountDto> Add(AccountDto account);
+      
     }
 }

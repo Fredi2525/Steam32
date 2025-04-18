@@ -1,29 +1,40 @@
-﻿
-@model AccuntAddressDto
+﻿@using Models.Accounts;
+
+@model AccountAddressDto
 <div class="row ">
     <div class="col-4 offset-4">
         <form method="post">
             <div>
                 <div class="mb-3">
                     <label for="exampleInputAddress" class="form-label">Address</label>
-                    <input type="address" asp-for="Address" class="form-control form-control-lg" id="exampleInputAddress" aria-describedby="addressHelp">                    
+                    <input type="text" asp-for="Address" class="form-control form-control-lg" id="exampleInputAddress" aria-describedby="addressHelp">
+                    <span asp-validation-for="Address" class="text-danger"></span>
+
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputCity" class="form-label">City</label>
-                    <input type="city" asp-for="City" class="form-control form-control-lg" id="exampleInputCity">
+                    <input type="text" asp-for="City" class="form-control form-control-lg" id="exampleInputCity">
+                    <span asp-validation-for="City" class="text-danger"></span>
+
                 </div>
                 <div class="mb-3 form-check">
                     <label for="exampleInputBuildingNumber" class="form-label">BuildingNumber</label>
-                    <input type="buildingNumber" asp-for="BuildingNumber" class="form-control form-control-lg" id="exampleInputBuildingNumber">
+                    <input type="text" asp-for="BuildingNumber" class="form-control form-control-lg" id="exampleInputBuildingNumber">
+                    <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+
                 </div>
                 <div class="mb-3 form-check">
                     <label for="exampleInputCountry" class="form-label">Country</label>
-                    <input type="country" asp-for="Country" class="form-control form-control-lg" id="exampleInputCountry">
+                    <input type="text" asp-for="Country" class="form-control form-control-lg" id="exampleInputCountry">
+                    <span asp-validation-for="Country" class="text-danger"></span>
                 </div> 
                 <div class="mb-3 form-check">
                     <label for="exampleInputZipCode" class="form-label">ZipCode</label>
-                    <input type="zipcode" asp-for="ZipCode" class="form-control form-control-lg" id="exampleInputZipCode">
+                    <input type="text" asp-for="ZipCode" class="form-control form-control-lg" id="exampleInputZipCode">
+                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+
                 </div>
+                <button type="submit" asp-action="RegistationStep2" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>

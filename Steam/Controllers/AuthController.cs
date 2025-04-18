@@ -16,10 +16,15 @@ namespace Steam.WebApp.Controllers
 		}
 
         [HttpGet]
-        public IActionResult AccuntAddressDto ()
+        public IActionResult RegistationStep2()
         {
             return View();
         }
+		[HttpPost]
+		public IActionResult RegistationStep2(AccountAddressDto model)
+        {
+			return View(model);
+		}
 
 
         [HttpGet]
@@ -43,7 +48,7 @@ namespace Steam.WebApp.Controllers
 				return View("RegistrationError");
 			}
 
-			return RedirectToAction("LOGIN");
+			return RedirectToAction("RegistationStep2");
         }
         [HttpGet]
 		public IActionResult Registration()
