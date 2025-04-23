@@ -61,5 +61,24 @@ namespace Services
             }
             return result;
         }
+
+        public ManagerResult<AccountAddressDto> Add(AccountAddressDto address)
+        {
+            var result = new ManagerResult<AccountAddressDto>();
+            try
+            {                
+
+                var dbResult = _accountManager.Add(_maper.Map<AccountAddress>(address));
+
+                result.Success = dbResult.Success;
+                result.Data = _maper.Map<AccountAddressDto>(dbResult.Data);
+            }
+            catch (Exception e)
+            {
+                result.Message = e.Message;
+            }
+            return result;
+        }
+
     }
 }

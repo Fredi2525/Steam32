@@ -14,8 +14,11 @@ namespace Models
         public AutoMapperProfile()
         {
             CreateMap<AccountDto, Account>()
-                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(x=> x.FName))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(x => x.FName));
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(x => x.FName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(x => x.FName))
+                .ReverseMap();
+
+            CreateMap<AccountAddressDto, AccountAddress>()       .ReverseMap();
 
 
         }

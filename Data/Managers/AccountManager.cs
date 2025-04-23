@@ -34,7 +34,28 @@ namespace Data.Managers
 			}
 			return result;
 		}
-		public ManagerResult<Account> GetByUserName(string email)
+        public ManagerResult<AccountAddress> Add(AccountAddress address)
+        {
+            var result = new ManagerResult<AccountAddress>();
+            try
+            {
+                var dbContext = _service.GetRequiredService<SteamDbContext>();
+
+                address.Created = DateTime.Now;
+
+                dbContext.AccountAddresses.Add(address);
+                dbContext.SaveChanges();
+                result.Data = address;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.Message = e.Message;
+            }
+            return result;
+        }
+
+        public ManagerResult<Account> GetByUserName(string email)
 		{
 			var result = new ManagerResult<Account>();
 

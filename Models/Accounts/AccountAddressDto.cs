@@ -15,10 +15,10 @@ namespace Models.Accounts
         [Required(ErrorMessage = "City not found")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "snf,vs")]
         public string BuildingNumber {  get; set; }
 
-        [Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "rfczsczsc.fdsa")]
         public string Country { get; set; }
       
         [Required(ErrorMessage = "ZipCode not found")]
