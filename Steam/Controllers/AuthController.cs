@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities.Account;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using Models.Accounts;
 using Services.Interfaces;
@@ -16,15 +17,30 @@ namespace Steam.WebApp.Controllers
 		}
 
         [HttpGet]
-        public IActionResult RegistationStep2()
+        public IActionResult RegistationStep2(Guid accountId )
         {
-            return View();
+            var model = new AccountAddressDto()
+            {
+                AccountId = accountId
+            };
+
+            return View(model);
         }
 		[HttpPost]
 		public IActionResult RegistationStep2(AccountAddressDto model)
         {
-			return View(model);
-		}
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+            var result = _accountService.Add(model);
+            if (!result.Success)
+            {
+                ViewBag.Error = !string.IsNullOrEmpty(result.Message) ? result.Message : "Реєстрація пройшла не успішно,спробуйте ще разок";
+                return View("RegistrationError");
+            }
+			return RedirectToAction("Login");
+        }
 
 
         [HttpGet]
@@ -47,8 +63,9 @@ namespace Steam.WebApp.Controllers
 				ViewBag.Error = !string.IsNullOrEmpty(result.Message) ? result.Message : "Реєстрація пройшла не успішно,спробуйте ще разок";
 				return View("RegistrationError");
 			}
+			return RedirectToAction("Login");
 
-			return RedirectToAction("RegistationStep2");
+			return RedirectToAction("RegistationStep2",new { accountId = result.Data.Id });
         }
         [HttpGet]
 		public IActionResult Registration()
