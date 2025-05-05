@@ -3,6 +3,7 @@ using Data.Managers.Interfaces;
 using Entities.Account;
 using Microsoft.Identity.Client;
 using Models.Accounts;
+using Models.Extensions;
 using Models.Managers;
 using Services.Interfaces;
 using System;
@@ -50,6 +51,7 @@ namespace Services
                     return result;
                 }
 
+                account.Password = account.Password.GetSHA256Hash();
                 var dbResult = _accountManager.Add(_maper.Map<Account>(account));
                 
                 result.Success = dbResult.Success;
@@ -72,6 +74,25 @@ namespace Services
 
                 result.Success = dbResult.Success;
                 result.Data = _maper.Map<AccountAddressDto>(dbResult.Data);
+            }
+            catch (Exception e)
+            {
+                result.Message = e.Message;
+            }
+            return result;
+        }
+       
+        public ManagerResult<AccountDto> GetAccountByUserNameAndPassword(string userName, string password)
+        {
+            var result = new ManagerResult<AccountDto>();
+            try
+            {
+
+                password = password.GetSHA256Hash();
+                var dbResult = _accountManager.GetAccountByUserNameAndPassword(userName, password);
+
+                result.Success = dbResult.Success;
+                result.Data = _maper.Map<AccountDto>(dbResult.Data);
             }
             catch (Exception e)
             {

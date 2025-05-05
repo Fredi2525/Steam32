@@ -13,7 +13,7 @@ namespace Models.Accounts
 
         public AccountDto? Account { get; set; }
         public Guid Id { get; set; }
-        public DateTime Created { get; set; }
+        
         public DateTime? Updated { get; set; }
 
         [Required(ErrorMessage = "Please enter the address in this field.")]

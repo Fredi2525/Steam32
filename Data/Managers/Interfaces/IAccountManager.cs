@@ -1,4 +1,5 @@
 ﻿using Entities.Account;
+using Models.Accounts;
 using Models.Managers;
 
 namespace Data.Managers.Interfaces
@@ -7,7 +8,7 @@ namespace Data.Managers.Interfaces
     {
 	    ManagerResult<Account> Add(Account account);
         ManagerResult<AccountAddress> Add(AccountAddress address);
-
         ManagerResult<Account> GetByUserName(string email);
+        ManagerResult<Account> GetAccountByUserNameAndPassword(string userName, string password);
     }
 }

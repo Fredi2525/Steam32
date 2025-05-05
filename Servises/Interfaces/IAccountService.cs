@@ -7,6 +7,8 @@ namespace Services.Interfaces
     {
 	    ManagerResult<AccountDto> Add(AccountDto account);
         ManagerResult<AccountAddressDto> Add(AccountAddressDto address);
+        ManagerResult<AccountDto> GetAccountByUserNameAndPassword(string userName, string password);
+
 
     }
 }

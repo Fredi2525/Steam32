@@ -15,7 +15,7 @@ namespace Models
         {
             CreateMap<AccountDto, Account>()
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(x => x.FName))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(x => x.FName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(x => x.LName))
                 .ReverseMap();
 
             CreateMap<AccountAddressDto, AccountAddress>()

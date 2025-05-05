@@ -49,6 +49,13 @@ namespace Steam.WebApp.Controllers
 			return View();
 		}
         [HttpPost]
+		public IActionResult login(LoginModel model)
+		{
+			var result = _accountService.GetAccountByUserNameAndPassword(model.Email, model.Password);
+			return Json("true");
+		}
+			
+        [HttpPost]
         public IActionResult Registration(AccountDto model)
         {
             if (!ModelState.IsValid)
