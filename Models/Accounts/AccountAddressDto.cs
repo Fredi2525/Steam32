@@ -30,6 +30,7 @@ namespace Models.Accounts
       
         [Required(ErrorMessage = "ZipCode not found")]
         public string ZipCode { get; set; }
-        
+        public string State { get; set; }
+
     }
 }

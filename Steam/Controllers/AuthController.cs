@@ -1,4 +1,7 @@
-﻿using Entities.Account;
+﻿using System.Security.Claims;
+using Entities.Account;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using Models.Accounts;
@@ -52,7 +55,35 @@ namespace Steam.WebApp.Controllers
 		public IActionResult login(LoginModel model)
 		{
 			var result = _accountService.GetAccountByUserNameAndPassword(model.Email, model.Password);
-			return Json("true");
+			if (result.Success)
+			{
+				Authenticate(result.Data).Wait();
+				return RedirectToAction("Index", "Home");
+			}
+
+			return View();
+
+		}
+		public IActionResult Logout()
+		{
+			HttpContext.SignOutAsync().Wait();
+			return RedirectToAction("Login", "Auth");
+		}
+		private async Task Authenticate(AccountDto account)
+		{
+			var claims = new List<Claim>
+			{
+				new Claim(ClaimsIdentity.DefaultNameClaimType, account.UserName ),
+				new Claim("FullName", $"{account.FName} {account.LName}"),
+				new Claim(ClaimTypes.Role, account.Role.ToString()),
+				new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
+
+			};
+			ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie"
+				, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+
+			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme
+				, new ClaimsPrincipal(id)); 
 		}
 			
         [HttpPost]

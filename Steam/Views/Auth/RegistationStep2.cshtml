@@ -35,6 +35,12 @@
                     <span asp-validation-for="ZipCode" class="text-danger"></span>
 
                 </div>
+                <div class="mb-3 form-check">
+                    <label for="exampleInputState" class="form-label"></label>
+                    <input type="text" asp-for="State" class="form-control form-control-lg" id="exampleInputState">
+                    <span asp-validation-for="State" class="text-danger"></span>
+
+                </div>
                 <button type="submit" asp-action="RegistationStep2" class="btn btn-primary">Submit</button>
             </div>
         </form>

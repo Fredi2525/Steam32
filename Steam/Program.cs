@@ -9,6 +9,7 @@ using Entities.Account;
 using Services;
 using AutoMapper;
 using Models.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Steam
 {
@@ -41,6 +42,16 @@ namespace Steam
             builder.Services.AddScoped<IAccountManager, AccountManager>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddAutomapperConfiguration();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/auth/login");
+                    options.LogoutPath = "/auth/logout";
+                    options.SlidingExpiration = true;
+                    options.Cookie.HttpOnly = false;
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -52,10 +63,11 @@ namespace Steam
             }
 
             app.UseHttpsRedirection();
+           
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

@@ -15,13 +15,14 @@ namespace Steam.WebApp.Controllers
 
         public IActionResult Index(string id)
         {
-
+            var currentUser = User;
 	        var oihjk = $"This is ID: {id}";
             return View();
         }
 
         public IActionResult Privacy()
         {
+            var currentUser = User;
             return View();
         }
 
