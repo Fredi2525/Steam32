@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Entities.Account;
+using Entities.Games;
 using Models.Accounts;
 
 namespace Models
@@ -21,10 +22,14 @@ namespace Models
             CreateMap<AccountAddressDto, AccountAddress>()
                 .ForMember(dest => dest.Created, opt => opt.Ignore())
                 .ReverseMap();
-            
-                
-                
-                
+
+            CreateMap<GameDto, Game>()
+                .ForMember(dest => dest.Created, opt => opt.Ignore())
+                .ReverseMap();
+
+
+
+
 
 
 

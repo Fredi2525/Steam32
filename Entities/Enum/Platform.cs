@@ -9,12 +9,15 @@ namespace Entities.Enum
 {
     public enum Platform
     {
-        [Display(Name ="PC,PS")]
-        PC = 1,
-        PS = 2
-          
+        [Display(Name ="PC")]
+        PC,
+        [Display(Name = "PS")]
+        PS,
+       [Display(Name = "XBOX")]
+        XBOX
 
-        
+
+
 
     }
 
