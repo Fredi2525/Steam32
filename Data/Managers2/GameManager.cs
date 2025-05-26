@@ -60,6 +60,24 @@ namespace Data.Managers2
 
 
         }
+        public ManagerResult<IQueryable<Game>> GetAll()
+        {
+            var result = new ManagerResult<IQueryable<Game>>();
+
+            var dbContext = _service.GetRequiredService<SteamDbContext>();
+
+            var games = dbContext.Games.Where(x =>!x.IsDelete);
+            if (games.Any())
+            {
+                result.Message = "Game not foud";
+                return result;
+            }
+
+            result.Data = games;
+            result.Success = true;
+
+            return result;
+        }
     }
 }
         

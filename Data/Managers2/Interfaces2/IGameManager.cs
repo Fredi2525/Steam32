@@ -11,6 +11,7 @@ namespace Data.Managers2.Interfaces2
     public interface IGameManager
     {        
         ManagerResult<Game> Add(Game game);
-        ManagerResult<Game> GetById (Guid id);
+        ManagerResult<Game> GetById(Guid id);
+        ManagerResult<IQueryable<Game>> GetAll();
     }
 }
