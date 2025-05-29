@@ -10,6 +10,8 @@ using Services;
 using AutoMapper;
 using Models.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Data.Managers2.Interfaces2;
+using Data.Managers2;
 
 namespace Steam
 {
@@ -40,6 +42,8 @@ namespace Steam
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IMapper, Mapper>();
             builder.Services.AddScoped<IAccountManager, AccountManager>();
+            builder.Services.AddScoped<IGameService, GameService>();
+            builder.Services.AddScoped<IGameManager, GameManager>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddAutomapperConfiguration();
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
